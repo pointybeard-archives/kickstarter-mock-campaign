@@ -1,0 +1,35 @@
+{
+    "name": "pointybeard/kickstarter-mock-campaign",
+    "description": "A PHP library for Generating mock Kickstarter campaign backer data.",
+    "type": "utility",
+    "keywords": ["kickstarter", "archive", "export", "backer data"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alannah Kearney",
+            "email": "hi@alannahkearney.com",
+            "homepage": "http://alannahkearney.com",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=7.2",
+        "fzaninotto/faker": "dev-master",
+        "pointybeard/property-bag": "~1.0",
+        "pointybeard/php-cli-lib": "~1.1",
+        "pointybeard/kickstarter-export-parser": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8"
+    },
+    "support": {
+      "issues": "https://github.com/pointybeard/kickstarter-mock-campaign/issues",
+      "wiki": "https://github.com/pointybeard/kickstarter-mock-campaign/wiki"
+    },
+    "autoload": {
+        "psr-4": {
+            "pointybeard\\Kickstarter\\MockCampaign\\": "src/"
+        }
+    }
+}

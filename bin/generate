@@ -1,0 +1,93 @@
+#!/usr/bin/env php
+<?php
+function usage() {
+    printf (PHP_EOL . "generate 1.0.0, generate a Kickstarter backer data archive
+    Usage: generate [OPTION]..
+
+Basics:
+  -h,  --help, --usage      print this help information
+  -s, --settings            Path of JSON file containing settings to use
+  -o                        Destination to save ZIP archive to
+
+Examples:
+... generate --settings=/path/to/file.json" . PHP_EOL . PHP_EOL);
+    exit;
+}
+
+include __DIR__ . '/../vendor/autoload.php';
+
+use CLILib\Argument;
+use CLILib\Message;
+use CLILib\Prompt;
+
+use pointybeard\Kickstarter\MockCampaign\Lib;
+
+$args = new Argument\Iterator;
+
+if ($args->find(['h', 'help', 'usage'])) {
+    usage();
+}
+
+$argSettings = $args->find(['s', 'settings']);
+if (!($argSettings instanceof Argument) || strlen(trim($argSettings->value())) == 0) {
+    (new Message)
+        ->message("[ERROR] No settings provided. Use -s or --settings to specify JSON file.")
+        ->prependDate(false)
+        ->foreground("red")
+        ->display()
+    ;
+    exit;
+} elseif (!is_readable($argSettings->value())) {
+    (new Message)
+        ->message(sprintf(
+            "[ERROR] The file '%s' is not readable.",
+            $argSettings->value()
+        ))
+        ->prependDate(false)
+        ->foreground("red")
+        ->display()
+    ;
+    exit;
+}
+
+$argOutput = $args->find('o');
+if (!($argOutput instanceof Argument) || strlen(trim($argOutput->value())) == 0) {
+    (new Message)
+        ->message("[ERROR] No output destination specified. Use -o to set save location for zip archive.")
+        ->prependDate(false)
+        ->foreground("red")
+        ->display()
+    ;
+    exit;
+}
+
+$settings = json_decode(file_get_contents($argSettings->value()));
+
+if($settings === false) {
+    (new Message)
+        ->message(sprintf(
+            "[ERROR] Settings JSON is invalid.",
+            $ex->getMessage()
+        ))
+        ->prependDate(false)
+        ->foreground("red")
+        ->display()
+    ;
+    exit;
+}
+
+try {
+    $tmpArchivePath = Lib\Generator::generate($settings);
+    copy($tmpArchivePath, $argOutput->value());
+
+} catch (\Exception $ex) {
+    (new Message)
+        ->message(sprintf(
+            "[ERROR] Unable to generate data. Returned: %s",
+            $ex->getMessage()
+        ))
+        ->prependDate(false)
+        ->foreground("red")
+        ->display()
+    ;
+}
