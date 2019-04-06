@@ -9,7 +9,7 @@
         {
             "name": "Base Game (Early Bird)",
             "minimumPledge": 40,
-            "backerPercentage": 3.55,
+            "backerPercentage": 12.25,
             "survey": [
                 {
                     "question": "Would you like to join our mailing list?",
@@ -43,7 +43,7 @@
             ]
         },
         {
-            "name": " Deluxe Edition (Early Bird)",
+            "name": "Deluxe Edition",
             "minimumPledge": 60,
             "backerPercentage": 50.55,
             "survey": [
@@ -52,11 +52,8 @@
                     "options": ["yes", "no"]
                 },
                 {
-                    "question": "Which language do you want your copy(ies) of Iwari in?",
+                    "question": "Which language do you want your copy(ies) in?",
                     "options": ["French", "German", "English", "Spanish", "Italian"]
-                },
-                {
-                    "question": "This question is specific to the Early Bird Backers."
                 }
             ],
             "shipping": [
@@ -79,17 +76,20 @@
             ]
         },
         {
-            "name": "Iwari: Deluxe Edition",
-            "minimumPledge": 60,
-            "backerPercentage": 36.80,
+            "name": "Mega Edition",
+            "minimumPledge": 120,
+            "backerPercentage": 32.80,
             "survey": [
                 {
                     "question": "Would you like to join our mailing list?",
                     "options": ["yes", "no"]
                 },
                 {
-                    "question": "Which language do you want your copy(ies) of Iwari in?",
+                    "question": "Which language do you want your copy(ies) in?",
                     "options": ["French", "German", "English", "Spanish", "Italian"]
+                },
+                {
+                    "question": "Is there anything else you'd like to tell us?"
                 }
             ],
             "shipping": [
