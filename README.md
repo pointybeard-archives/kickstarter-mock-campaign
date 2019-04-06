@@ -5,8 +5,6 @@
 - [Release notes](https://github.com/pointybeard/kickstarter-mock-campaign/blob/master/CHANGELOG.md)
 - [GitHub repository](https://github.com/pointybeard/kickstarter-mock-campaign)
 
-[![Latest Stable Version](https://poser.pugx.org/pointybeard/kickstarter-mock-campaign/version)](https://packagist.org/packages/pointybeard/kickstarter-mock-campaign) [![License](https://poser.pugx.org/pointybeard/kickstarter-mock-campaign/license)](https://packagist.org/packages/pointybeard/kickstarter-mock-campaign)
-
 A utility for generating backer data exports, simulating a campaign.
 
 ## Installation
@@ -20,7 +18,7 @@ To see usage information, run the comment `bin/generate --help`. Included in thi
 
 The quickest way to try this out is with the command:
 
-    bin/generate -s settings.example.php -o exampleCampaignData.zip
+    bin/generate -s settings.example.json -o exampleCampaignData.zip
 
 ## Support
 
